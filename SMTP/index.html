@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<input type="email" id="Lmail" placeholder="Plz use @example.com" \>
+	<input type="email" id="Tmail" placeholder="target" \>
+	<input type="button" id="btn" value="Submit" \>
+</body>
+<script>
+	//Return DOM.
+	var $=function(id){
+		return document.getElementById(id);
+	}
+	//button's listener with click.
+	$('btn').addEventListener("click", function(event){
+		var mailinfo = {};
+		mailinfo.Lmail = $('Lmail').value;
+		mailinfo.Tmail = $('Tmail').value;
+		//use ajax to send json.
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST","/newListener",false);
+		console.log(mailinfo);
+		xhr.send(JSON.stringify(mailinfo));
+		//when this ajax is successful.xhe.status will return 200.
+		if (xhr.status==200) {
+			alert("successful");
+		};
+	});
+</script>
+</html>

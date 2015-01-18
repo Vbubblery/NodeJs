@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="renderer" content="webkit" />
+        <title>
+            <%=title%>
+        </title>
+        <link type="text/css" href="/stylesheets/upload.css" rel="stylesheet"
+        />
+        <style type="text/css">
+            div.dragsource{ clear:both;width:200px; height:30px; line-height:30px;
+            background-color:#00CCCC; text-align:center; color:#FFFFFD; } div.dir{
+            float: left; width:200px; height:30px; line-height:30px; background-color:#00ff00;
+            text-align:center; color:#FFFFFF; }
+        </style>
+        <script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js">
+        </script>
+        <script type="text/javascript" src="/javascripts/uploader/uploader.js">
+        </script>
+        <script type="text/javascript" src="/javascripts/uploader/uploaderQueue.js">
+        </script>
+        <script type="text/javascript" src="/javascripts/uploader/uploaderApp.js">
+        </script>
+        <script type="text/javascript" src="/javascripts/uploader.js">
+        </script>
+        <script type="text/javascript" src="/javascripts/jquery-1.7.min.js">
+        </script>
+        <script type="text/javascript" src="/javascripts/jquery-ui-1.8.16.custom.min.js">
+        </script>
+    </head>
+    
+    <body>
+        <div>
+            <input type="button" id="Ndir" value="+" />
+        </div>
+        <div id="web_dir">
+        </div>
+        <div id="web_file">
+        </div>
+        <br />
+        <div style="margin-top:10px;" class="container" id='container'>
+            <div class="header">
+                <strong class="title_status" id="uploadDialogHeadlineStrong">
+                </strong>
+                <div class="sprite_new">
+                </div>
+            </div>
+            <div id="uploadItems">
+            </div>
+        </div>
+    </body>
+        <script type="text/javascript">
+        var main = new uploaderApp.main('container');
+        main.init();
+    </script>
+    <script type="text/javascript">
+        var web_file = document.getElementById('web_file');
+        var web_dir = document.getElementById('web_dir');
+        var handle_div;
+        var ab = function(e){
+            alert(e);
+        }
+        var ajax = function() {
+            cleardiv();
+            var xml = new XMLHttpRequest();
+            xml.open('GET', '/getdata', false);
+            xml.send();
+            var results = JSON.parse(xml.response);
+            dir();
+            files();
+            var alldir = document.getElementsByClassName('dir');
+            for (var i = alldir.length - 1; i >= 0; i--) {
+                var tmp = alldir[i];
+                tmp.addEventListener('dblclick',
+                function() {
+                    alert();
+                },
+                true);
+            }
+            function dir() {
+                results.dir.forEach(function(event) {
+                    LoadDir(event);
+                });
+                function LoadDir(event) {
+                    var divs = document.createElement('div');
+                    divs.setAttribute("class", "dir");
+                    divs.innerText = event;
+                    web_dir.appendChild(divs);
+                    $(".dir").droppable({
+                        drop: function(event, ui) {
+                            console.log(this);
+                            var xml2 = new XMLHttpRequest();
+                            xml2.open('GET', "/MoveToDir/" + handle_div + "/" + this.innerText + "", false);
+                            xml2.send();
+                            if (xml2.status == 200) {
+                                setTimeout("ajax()", 1000);
+                            }
+                        }
+                    });
+                }
+            }
+            function files() {
+                results.file.forEach(function(event) {
+                    LoadFile(event);
+                });
+                function LoadFile(result) {
+                    var divss = document.createElement('div');
+                    divss.setAttribute("class", "dragsource");
+                    divss.innerHTML = result+"<a href='/delete/"+result+"'>X</a><a href='/download/"+result+"'>↓</a><a href='/downpath/"+result+"'>S</a>";
+                    web_file.appendChild(divss);
+                    $(".dragsource").draggable({
+                        start: function(event, ui) {
+                            var file=this.innerText;
+                            var filelength=file.length;
+                            var realfilename=file.substr(0,filelength-3);
+                            handle_div = realfilename;
+                        },
+                        stop: function(event, ui) {
+                            console.log(this.innerText);
+                        }
+                    });
+                }
+            }
+            function cleardiv() {
+                document.getElementById('web_dir').innerHTML = null;
+                document.getElementById('web_file').innerHTML = null;
+            }
+        }
+        var ndir = document.getElementById('Ndir');
+        ndir.addEventListener('click',
+        function() {
+            var xml3 = new XMLHttpRequest();
+            xml3.open("get", "/NewDir", false);
+            xml3.send();
+        },
+        false);
+         window.onload=function(){ajax();}
+    </script>
+</html>

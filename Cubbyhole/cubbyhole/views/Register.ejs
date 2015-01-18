@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="renderer" content="webkit"/>
+        <title>
+        </title>
+        <link rel='stylesheet' href='/stylesheets/button.css' />
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <% include nav.ejs %>
+            <div id="main_div">
+                <form id="register_form" method="POST" autocomplete="off">
+                    <span id="TANG">
+                    </span>
+                    <p>
+                        <label class="label_reg">
+                            Email Address
+                        </label>
+                        <input type="address" class="input" name="email" placeholder="Email" required="required" autofocus required>
+                    </p>
+                    <p>
+                        <label class="label_reg">
+                            Password
+                        </label>
+                        <input type="password" class="input" name="password" placeholder="Password"
+                        required="required">
+                    </p>
+                    <p>
+                        <span class="label_reg">
+                            &nbsp
+                        </span>
+                        <input type="submit" class="submit_register button black tags" value="Register">
+                    </p>
+                </form>
+            </div>
+            <div class="footer">
+                2014 ©Supinfo
+            </div>
+    </body>
+</html>

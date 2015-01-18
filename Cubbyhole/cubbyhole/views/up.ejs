@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="renderer" content="webkit" />
+        <title>
+            <%=title %>
+        </title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    
+    <body>
+        <% include nav.ejs %>
+            <div style="MARGIN-LEFT: 30%">
+                <table border="1">
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            None
+                        </td>
+                        <td>
+                            A
+                        </td>
+                        <td>
+                            B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Bandwith
+                        </td>
+                        <td>
+                            150Kb/s
+                        </td>
+                        <td>
+                            2Mb/s
+                        </td>
+                        <td>
+                            free
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Storage
+                        </td>
+                        <td>
+                            20GB
+                        </td>
+                        <td>
+                            1TB
+                        </td>
+                        <td>
+                            free
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Price
+                        </td>
+                        <td>
+                            free
+                        </td>
+                        <td>
+                            $20.00 per month
+                        </td>
+                        <td>
+                            $100.00 per month
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <form action="#" method="post">
+                        <p>
+                            <select id="plan" name="plan">
+                                <option value="none" selected="selected">
+                                    None
+                                </option>
+                                <option value="a">
+                                    A
+                                </option>
+                                <option value="b">
+                                    B
+                                </option>
+                            </select>
+                        </p>
+                        <p>
+                            <input type="submit" id="buy" value="Buy" disabled="disabled" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+    </body>
+    <script type="text/javascript">
+        var obj = document.getElementById('plan');
+        var buy = document.getElementById('buy');
+        obj.addEventListener('change',
+        function(e) {
+            var index = obj.selectedIndex;
+            var value = obj.options[index].value;
+            if (value != 'none') {
+                buy.disabled = false;
+            } else {
+                buy.disabled = true;
+            }
+        },
+        false);
+    </script>
+
+</html>

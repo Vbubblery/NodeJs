@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+       <script type="text/javascript" src="roomfile.js"></script>
+       <style type="text/css" >
+         .roomcss{
+          background:#000; color:#FFF;
+         }
+       </style>
+</head>
+<body onload="init();">
+<div id ="rooms">
+</div>
+<footer>
+ <input type="button" id="CreateNewRoom" value="Create a new Room" />
+</footer>
+<div>
+ <dialog id="dialog">
+     <div>
+     <input type="text" id="NameOfRoom"  placeholder="The name of the room" />
+      </div>
+      <div>
+       <select id="language" multiple>
+        <option value="1" selected>English</option>
+        <option value="2">Chinese</option>
+       </select>
+       </div>
+       <div>
+     <input type="button" id="close" value="Create">
+     </div>
+ </dialog>
+</div>
+</body>
+</html>

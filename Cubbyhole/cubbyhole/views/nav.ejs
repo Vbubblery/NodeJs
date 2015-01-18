@@ -1,0 +1,26 @@
+<div id="main_nav">
+    <header>
+        <div style=" float:left;">
+            <a href="/" title="">
+                <img src="../images/cubby.jpg" alt="Oreva Logo">
+            </a>
+        </div>
+        <div id="content_div">
+        </div>
+    </header>
+    <!--/header-->
+</div>
+<script type="text/javascript">
+    var content_div = document.getElementById('content_div');
+    var content_div_ul = document.createElement('ul');
+    var e = ["<%-first%>", "<%-two%>"];
+    e.forEach(function(event) {
+        LogginAndInformation(event)
+    });
+    function LogginAndInformation(event) {
+        var content_div_ul_li = document.createElement('li');
+        content_div_ul_li.innerHTML = event;
+        content_div_ul.appendChild(content_div_ul_li);
+        content_div.appendChild(content_div_ul)
+    }
+</script>

@@ -1,0 +1,87 @@
+body
+{
+ color: #FFF;
+    font: 12px 'Lucida Sans Unicode', 'Trebuchet MS', Arial, Helvetica;    
+    margin: 0;
+    background:
+radial-gradient(black 15%, transparent 16%) 0 0,
+radial-gradient(black 15%, transparent 16%) 8px 8px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+background-color:#282828;
+background-size:16px 16px;
+}
+
+header{
+ width:100%;
+ background:url(../images/header-nav-bg.png) repeat;
+ padding:10px 10px 0 10px;
+ border-radius:0 0 4px 4px;
+margin-top: 0px;
+float:left;
+}
+.footer{
+width:980px;margin-left:auto;margin-right:auto;
+text-align:center;color:#7a77c8;margin-top:40px;margin-bottom:20px
+}
+#main_nav {
+  /*position:fixed;*/
+  width:100%;height:100%;
+}
+
+#TANG{
+ display: block;
+ height: 140px;
+}
+#main_div {
+ padding:10px 10px 10px 190px;
+
+}
+#main_div p{
+ margin-top: 2em;
+}
+
+#content_div{
+ float:right;
+ height: 20px;
+}
+#content_div ul{
+list-style:none;
+}
+#content_div>ul>li{
+float:left;
+margin-right: 2em;
+}
+#content_div>ul>li>a{
+ float:left;
+ color: #00B7FF;
+}
+.clear{  
+clear:both;  
+}  
+#choose_div{
+ width: 900px;
+ height: 900px;
+ margin-top: 10em;
+ position: relative;
+}
+.input{
+ width: 15em;
+ height: 1.5em;
+ margin-left: 3em;
+}
+.input_register{
+ width: 8em;
+ height: 1.5em;
+ margin-left: 3em;
+}
+.label_reg{
+float:left;
+width:10em; 
+font-size: 20px;
+text-align: right;
+color:#6633FF;
+}
+.submit_register{
+ margin-left: 3em;
+}

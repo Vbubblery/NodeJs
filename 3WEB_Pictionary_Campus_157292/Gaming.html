@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title></title>
+
+</head>
+<body onbeforeunload="closeIt(event)">
+<div style="height:630px">
+     <div id="drawCanvas" >
+      <canvas id="graph" style="border:1px solid black;float:left;" width="990" height="625" >
+       Your browser does not support HTML5, please use the Chrome browser, Firefox.
+      </canvas>
+      <div>
+      <select id="colorselect" >
+       <option value="#df4b26" selected>default</option>
+       <option value="red">red</option>
+       <option value="black">black</option>
+       <option value="blue">blue</option>
+      </select>
+      <input type="button" id="white" value="Eraser">
+      <input type="button" id="begin" value="Start">
+      </div>
+     </div>
+     <div style="#FFF;float:left;height:600px;width:25%;">
+         <div id="timer"  style="border:1px solid black;font-size:30px;text-align:center;height:200px;text-size:30">
+         </div>
+         <div  style="border:1px solid black;height:200px;">
+        <select id="userlist" style="height: 200px;width: 331px; font-size:20px;"multiple="multiple">
+        </select>
+         </div>
+         <textarea id="allmessage" readonly="readonly" style="border:1px solid black;background:white; width:330px;
+         height:150px;" cols=40></textarea>
+         <div  style="height:30px;">
+         <input type="text" id="word" placeholder="say...">
+         <input type="button" id="messagesubmit" value="submit">
+         </div>
+     </div>
+</div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="gamefile.js" type="text/javascript" >
+</script>
+</html>
